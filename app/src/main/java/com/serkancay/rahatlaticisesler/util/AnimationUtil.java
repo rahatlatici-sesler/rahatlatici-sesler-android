@@ -13,7 +13,7 @@ public class AnimationUtil {
     /**
      * Buyuyup-kuculme animasyonu olusturur.
      */
-    public static Animation createScaleAnimation(long duration) {
+    public static ScaleAnimation createScaleAnimation(long duration) {
         ScaleAnimation scaleAnimation;
         BounceInterpolator bounceInterpolator;
         scaleAnimation = new ScaleAnimation(0.7f, 1.0f, 0.7f, 1.0f, Animation.RELATIVE_TO_SELF, 0.7f,

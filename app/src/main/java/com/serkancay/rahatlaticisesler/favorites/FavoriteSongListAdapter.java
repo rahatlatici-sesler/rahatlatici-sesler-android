@@ -9,19 +9,24 @@ import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.ScaleAnimation;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.ToggleButton;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.serkancay.rahatlaticisesler.R;
+import com.serkancay.rahatlaticisesler.favorites.FavoriteSongListAdapter.FavoriteHolder;
+import com.serkancay.rahatlaticisesler.util.AnimationUtil;
 import com.serkancay.rahatlaticisesler.util.ColorUtil;
 
 /**
  * Created by S.Serkan Cay on 16.05.2019
  */
 
-public class FavoriteSongListAdapter extends RecyclerView.Adapter<ViewHolder> {
+public class FavoriteSongListAdapter extends RecyclerView.Adapter<FavoriteHolder> {
 
     private static final int RESOURCE = R.layout.item_favorite_song_list;
 
@@ -31,6 +36,8 @@ public class FavoriteSongListAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     private DividerItemDecoration mItemDecoration;
 
+    private ScaleAnimation mScaleAnimation;
+
     private Context mContext;
 
     public FavoriteSongListAdapter(Context context) {
@@ -38,11 +45,12 @@ public class FavoriteSongListAdapter extends RecyclerView.Adapter<ViewHolder> {
         mLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
         mItemDecoration = new DividerItemDecoration(context, DividerItemDecoration.VERTICAL);
         mContext = context;
+        mScaleAnimation = AnimationUtil.createScaleAnimation(500);
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull final ViewGroup viewGroup, final int i) {
+    public FavoriteHolder onCreateViewHolder(@NonNull final ViewGroup viewGroup, final int i) {
         View itemView = mInflater.inflate(RESOURCE, viewGroup, false);
         FavoriteHolder holder = new FavoriteHolder(itemView);
         holder.view.setBackgroundColor(ColorUtil.generateRandomColor());
@@ -50,8 +58,13 @@ public class FavoriteSongListAdapter extends RecyclerView.Adapter<ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final ViewHolder viewHolder, final int i) {
-
+    public void onBindViewHolder(@NonNull final FavoriteHolder holder, final int i) {
+        holder.tbFavorite.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
+                buttonView.startAnimation(mScaleAnimation);
+            }
+        });
     }
 
     @Override
