@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
+import android.widget.ToggleButton;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.serkancay.rahatlaticisesler.R;
@@ -55,7 +56,7 @@ public class FavoriteSongListAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return 5;
+        return 20;
     }
 
     @Override
@@ -73,11 +74,11 @@ public class FavoriteSongListAdapter extends RecyclerView.Adapter<ViewHolder> {
         @BindView(R.id.seekBarVolume)
         SeekBar seekBarVolume;
 
-        @BindView(R.id.ibPlayPause)
-        ImageButton ibPlayPause;
+        @BindView(R.id.tbPlayPause)
+        ToggleButton tbPlayPause;
 
-        @BindView(R.id.ibFavorite)
-        ImageButton ibFavorite;
+        @BindView(R.id.tbFavorite)
+        ToggleButton tbFavorite;
 
         public FavoriteHolder(@NonNull final View itemView) {
             super(itemView);

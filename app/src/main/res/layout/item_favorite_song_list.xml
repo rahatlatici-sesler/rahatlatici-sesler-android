@@ -19,19 +19,26 @@
         android:layout_marginLeft="@dimen/medium_padding"
         android:layout_weight="1" />
 
-    <ImageButton
-        android:id="@+id/ibPlayPause"
+    <ToggleButton
+        android:id="@+id/tbPlayPause"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/ic_play" />
+        android:layout_marginLeft="@dimen/medium_padding"
+        android:background="@drawable/selector_play_pause_button"
+        android:checked="false"
+        android:text=""
+        android:textOff=""
+        android:textOn="" />
 
-    <ImageButton
-        android:id="@+id/ibFavorite"
+    <ToggleButton
+        android:id="@+id/tbFavorite"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/ic_favorite_border"
-        android:tint="@color/red" />
+        android:layout_marginLeft="@dimen/medium_padding"
+        android:background="@drawable/selector_favorite_button"
+        android:checked="false"
+        android:text=""
+        android:textOff=""
+        android:textOn="" />
 
 </LinearLayout>
