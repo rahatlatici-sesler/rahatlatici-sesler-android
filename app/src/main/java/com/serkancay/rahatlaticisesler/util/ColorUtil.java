@@ -6,7 +6,7 @@ import java.util.Random;
  * Created by S.Serkan Cay on 16.05.2019
  */
 
-public class Color {
+public class ColorUtil {
 
     public static int generateRandomColor() {
         Random random = new Random();
