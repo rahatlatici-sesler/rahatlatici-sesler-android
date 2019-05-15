@@ -23,6 +23,9 @@ public class BaseActivity extends AppCompatActivity {
         return -1;
     }
 
+    public void bindEvents() {
+    }
+
     public void onCreated() {
     }
 
@@ -47,6 +50,7 @@ public class BaseActivity extends AppCompatActivity {
         }
 
         onCreated();
+        bindEvents();
     }
 
     @Override

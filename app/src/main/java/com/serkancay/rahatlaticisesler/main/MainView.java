@@ -9,5 +9,4 @@ import com.serkancay.rahatlaticisesler.BaseFragment;
 public interface MainView {
 
     void setFragment(BaseFragment fragment);
-
 }

@@ -87,6 +87,7 @@ public class BottomNavigationBar extends LinearLayout implements OnClickListener
         mInflater.inflate(RESOURCE, this);
         initViews();
         bindEvents();
+        displayFavoritesSelectedUI();
     }
 
     private void initViews() {
