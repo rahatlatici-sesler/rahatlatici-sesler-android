@@ -3,7 +3,10 @@ package com.serkancay.rahatlaticisesler;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import butterknife.ButterKnife;
 
 /**
@@ -62,5 +65,23 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     public void onDestroyed() {
+    }
+
+    public void replaceFragment(View view, Fragment fragment, boolean addToBackStack) {
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(view.getId(), fragment);
+        if (addToBackStack) {
+            ft.addToBackStack(fragment.getClass().getSimpleName());
+        }
+        ft.commit();
+    }
+
+    public void removeFragment(Fragment fragment, boolean addToBackStack) {
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.remove(fragment);
+        if (addToBackStack) {
+            ft.addToBackStack(fragment.getClass().getSimpleName());
+        }
+        ft.commit();
     }
 }
