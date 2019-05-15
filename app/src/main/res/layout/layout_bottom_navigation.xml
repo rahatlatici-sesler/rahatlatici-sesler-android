@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@drawable/shape_black_shadow" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/llFavoritesButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/small_padding">
+
+            <ImageView
+                android:id="@+id/ivFavorites"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_favorite"
+                android:tint="@color/light_grey" />
+
+            <TextView
+                android:id="@+id/tvFavorites"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/smallest_padding"
+                android:text="@string/bottom_navigation_bar_favorites_text_view"
+                android:textColor="@color/light_grey" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llLibraryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="@dimen/small_padding">
+
+            <ImageView
+                android:id="@+id/ivLibrary"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:src="@drawable/ic_library"
+                android:tint="@color/light_grey" />
+
+            <TextView
+                android:id="@+id/tvLibrary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/smallest_padding"
+                android:text="@string/bottom_navigation_bar_library_text_view"
+                android:textColor="@color/light_grey" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

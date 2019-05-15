@@ -1,4 +1,8 @@
 <resources>
     <!-- Globals -->
     <string name="app_name">Rahatlatıcı Sesler</string>
+
+    <!-- BottomNavigationBar -->
+    <string name="bottom_navigation_bar_favorites_text_view">Favorilerim</string>
+    <string name="bottom_navigation_bar_library_text_view">Kitaplık</string>
 </resources>
