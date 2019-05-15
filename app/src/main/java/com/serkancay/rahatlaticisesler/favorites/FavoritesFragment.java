@@ -1,5 +1,7 @@
 package com.serkancay.rahatlaticisesler.favorites;
 
+import android.support.v7.widget.RecyclerView;
+import butterknife.BindView;
 import com.serkancay.rahatlaticisesler.BaseFragment;
 import com.serkancay.rahatlaticisesler.R;
 
@@ -9,8 +11,19 @@ import com.serkancay.rahatlaticisesler.R;
 
 public class FavoritesFragment extends BaseFragment {
 
+    @BindView(R.id.rvSongs)
+    RecyclerView rvSongs;
+
+    private FavoriteSongListAdapter mSongListAdapter;
+
     @Override
     public int getLayoutId() {
         return R.layout.fragment_favorites;
+    }
+
+    @Override
+    public void onCreated() {
+        mSongListAdapter = new FavoriteSongListAdapter(context);
+        rvSongs.setAdapter(mSongListAdapter);
     }
 }

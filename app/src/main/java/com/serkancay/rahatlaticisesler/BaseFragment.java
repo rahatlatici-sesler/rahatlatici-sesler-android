@@ -26,6 +26,9 @@ public class BaseFragment extends Fragment {
         return -1;
     }
 
+    public void onCreated() {
+    }
+
     public void onResumed() {
     }
 
@@ -45,6 +48,7 @@ public class BaseFragment extends Fragment {
             vgContainer = (ViewGroup) inflater.inflate(getLayoutId(), null);
             ButterKnife.bind(this, vgContainer);
         }
+        onCreated();
         return vgContainer;
     }
 
