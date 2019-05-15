@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <item android:drawable="@color/colorPrimary" />
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:centerColor="#1AEBD2"
+                android:endColor="#202BE2AB"
+                android:startColor="#00FFB2" />
+        </shape>
+    </item>
+
+    <item
+        android:width="100dp"
+        android:height="100dp"
+        android:gravity="center">
+        <bitmap
+            android:gravity="fill_horizontal|fill_vertical"
+            android:src="@drawable/img_palm_logo" />
+    </item>
+</layer-list>
