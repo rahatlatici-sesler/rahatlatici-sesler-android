@@ -19,6 +19,22 @@ public class BaseActivity extends AppCompatActivity {
 
     public BaseActivity activity;
 
+    public int getLayoutId() {
+        return -1;
+    }
+
+    public void onCreated() {
+    }
+
+    public void onResumed() {
+    }
+
+    public void onPaused() {
+    }
+
+    public void onDestroyed() {
+    }
+
     @Override
     protected void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,22 +65,6 @@ public class BaseActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         onDestroyed();
-    }
-
-    public int getLayoutId() {
-        return -1;
-    }
-
-    public void onCreated() {
-    }
-
-    public void onResumed() {
-    }
-
-    public void onPaused() {
-    }
-
-    public void onDestroyed() {
     }
 
     public void replaceFragment(View view, Fragment fragment, boolean addToBackStack) {
