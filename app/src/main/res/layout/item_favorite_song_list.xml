@@ -7,23 +7,27 @@
     android:padding="@dimen/medium_padding">
 
     <View
+        android:id="@+id/view"
         android:layout_width="2dp"
         android:layout_height="match_parent"
         android:background="@color/black" />
 
     <SeekBar
+        android:id="@+id/seekBarVolume"
         android:layout_width="0px"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/medium_padding"
         android:layout_weight="1" />
 
     <ImageButton
+        android:id="@+id/ibPlayPause"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:src="@drawable/ic_play" />
 
     <ImageButton
+        android:id="@+id/ibFavorite"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:background="?attr/selectableItemBackgroundBorderless"
