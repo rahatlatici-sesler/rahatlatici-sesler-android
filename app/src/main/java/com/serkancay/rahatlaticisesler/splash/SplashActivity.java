@@ -13,11 +13,6 @@ public class SplashActivity extends BaseActivity implements SplashView {
     private SplashPresenter mPresenter;
 
     @Override
-    public int getLayoutId() {
-        return R.layout.activity_splash;
-    }
-
-    @Override
     public void onCreated() {
         mPresenter = new SplashPresenter(this);
         mPresenter.finishWithDelay();
