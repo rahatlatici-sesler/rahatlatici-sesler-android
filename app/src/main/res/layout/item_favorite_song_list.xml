@@ -12,12 +12,29 @@
         android:layout_height="match_parent"
         android:background="@color/black" />
 
-    <SeekBar
-        android:id="@+id/seekBarVolume"
+    <LinearLayout
         android:layout_width="0px"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/medium_padding"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kus sesi 1"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+
+        <SeekBar
+            android:id="@+id/seekBarVolume"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/medium_padding" />
+
+    </LinearLayout>
+
 
     <ToggleButton
         android:id="@+id/tbPlayPause"

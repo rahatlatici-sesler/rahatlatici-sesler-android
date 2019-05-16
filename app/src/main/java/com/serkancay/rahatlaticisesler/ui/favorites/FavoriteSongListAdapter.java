@@ -13,11 +13,11 @@ import android.view.animation.ScaleAnimation;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.SeekBar;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.serkancay.rahatlaticisesler.R;
-import com.serkancay.rahatlaticisesler.data.network.model.FavoriteListResponse;
 import com.serkancay.rahatlaticisesler.data.network.model.FavoriteListResponse.Song;
 import com.serkancay.rahatlaticisesler.ui.favorites.FavoriteSongListAdapter.FavoriteHolder;
 import com.serkancay.rahatlaticisesler.util.AnimationUtil;
@@ -64,6 +64,8 @@ public class FavoriteSongListAdapter extends RecyclerView.Adapter<FavoriteHolder
 
     @Override
     public void onBindViewHolder(@NonNull final FavoriteHolder holder, final int i) {
+        Song song = mSongList.get(i);
+        holder.tvName.setText(song.getName());
         holder.tbFavorite.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
@@ -97,6 +99,9 @@ public class FavoriteSongListAdapter extends RecyclerView.Adapter<FavoriteHolder
 
         @BindView(R.id.tbFavorite)
         ToggleButton tbFavorite;
+
+        @BindView(R.id.tvName)
+        TextView tvName;
 
         public FavoriteHolder(@NonNull final View itemView) {
             super(itemView);

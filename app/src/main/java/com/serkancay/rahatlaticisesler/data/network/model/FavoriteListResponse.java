@@ -24,6 +24,9 @@ public class FavoriteListResponse {
         @SerializedName("song_path")
         private String mSongPath;
 
+        @SerializedName("name")
+        private String mName;
+
         public int getId() {
             return mId;
         }
@@ -38,6 +41,14 @@ public class FavoriteListResponse {
 
         public void setSongPath(final String songPath) {
             mSongPath = songPath;
+        }
+
+        public String getName() {
+            return mName;
+        }
+
+        public void setName(final String name) {
+            mName = name;
         }
     }
 
