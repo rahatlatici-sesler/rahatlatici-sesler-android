@@ -45,6 +45,8 @@ public class LibraryDetailFragment extends BaseFragment implements LibraryDetail
 
     @Override
     public void onResumed() {
+        getNavigationPresenter().setTitle(mCategory.getName());
+        getNavigationPresenter().setDisplayHomeAsUpEnabled(true);
         mPresenter.onResume();
     }
 

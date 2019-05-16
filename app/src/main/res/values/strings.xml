@@ -5,4 +5,10 @@
     <!-- BottomNavigationBar -->
     <string name="bottom_navigation_bar_favorites_text_view">Favorilerim</string>
     <string name="bottom_navigation_bar_library_text_view">Kitaplık</string>
+
+    <!-- Favorites UI -->
+    <string name="ui_favorites_title">Favorilerim</string>
+
+    <!-- Library UI -->
+    <string name="ui_library_title">Kitaplık</string>
 </resources>

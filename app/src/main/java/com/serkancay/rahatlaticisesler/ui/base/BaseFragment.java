@@ -23,7 +23,7 @@ public class BaseFragment extends Fragment implements FragmentNavigation.View {
 
     public BaseActivity activity;
 
-    protected FragmentNavigation.Presenter mPresenter;
+    protected FragmentNavigation.Presenter mNavigationPresenter;
 
     public int getLayoutId() {
         return -1;
@@ -41,8 +41,8 @@ public class BaseFragment extends Fragment implements FragmentNavigation.View {
     public void onDestroyed() {
     }
 
-    public FragmentNavigation.Presenter getPresenter() {
-        return mPresenter;
+    public FragmentNavigation.Presenter getNavigationPresenter() {
+        return mNavigationPresenter;
     }
 
     @Nullable
@@ -79,6 +79,6 @@ public class BaseFragment extends Fragment implements FragmentNavigation.View {
 
     @Override
     public void attachPresenter(final Presenter presenter) {
-        mPresenter = presenter;
+        mNavigationPresenter = presenter;
     }
 }

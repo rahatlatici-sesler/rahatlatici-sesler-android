@@ -15,5 +15,9 @@ public interface FragmentNavigation {
     interface Presenter {
 
         void addFragment(BaseFragment fragment, boolean addToBackStack);
+
+        void setTitle(String title);
+
+        void setDisplayHomeAsUpEnabled(boolean isEnabled);
     }
 }

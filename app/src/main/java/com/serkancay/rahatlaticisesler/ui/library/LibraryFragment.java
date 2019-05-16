@@ -20,6 +20,9 @@ public class LibraryFragment extends BaseFragment implements LibraryView {
     @BindView(R.id.rvCategories)
     RecyclerView rvCategories;
 
+//    @BindView(R.id.toolbar)
+//    Toolbar toolbar;
+
     private LibraryPresenter mPresenter;
 
     private CategoryListAdapter mCategoryListAdapter;
@@ -33,6 +36,8 @@ public class LibraryFragment extends BaseFragment implements LibraryView {
 
     @Override
     public void onCreated() {
+//        toolbar.setTitle(getString(R.string.ui_library_title));
+
         mCategoryList = new ArrayList<>();
         mCategoryListAdapter = new CategoryListAdapter(context, mCategoryList);
         mCategoryListAdapter.setCallback(mCallback);
@@ -42,6 +47,8 @@ public class LibraryFragment extends BaseFragment implements LibraryView {
 
     @Override
     public void onResumed() {
+        getNavigationPresenter().setTitle(getString(R.string.ui_library_title));
+        getNavigationPresenter().setDisplayHomeAsUpEnabled(false);
         mPresenter.onResume();
     }
 
@@ -71,7 +78,8 @@ public class LibraryFragment extends BaseFragment implements LibraryView {
     public void navigateToDetailScreen(final Category category) {
         LibraryDetailFragment frLibraryDetail = new LibraryDetailFragment();
         frLibraryDetail.setCategory(category);
-        getPresenter().addFragment(frLibraryDetail, true);
+        getNavigationPresenter().addFragment(frLibraryDetail, true);
+        getNavigationPresenter().setTitle(category.getName());
     }
 
     private Callback mCallback = new Callback() {

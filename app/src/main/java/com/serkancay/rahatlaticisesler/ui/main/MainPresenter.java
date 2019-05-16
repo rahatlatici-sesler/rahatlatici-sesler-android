@@ -20,4 +20,13 @@ public class MainPresenter implements FragmentNavigation.Presenter {
         mView.setFragment(fragment, addToBackStack);
     }
 
+    @Override
+    public void setTitle(final String title) {
+        mView.changeTitle(title);
+    }
+
+    @Override
+    public void setDisplayHomeAsUpEnabled(final boolean isEnabled) {
+        mView.setDisplayHomeAsUpEnabled(isEnabled);
+    }
 }

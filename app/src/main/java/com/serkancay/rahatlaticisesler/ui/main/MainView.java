@@ -9,4 +9,8 @@ import com.serkancay.rahatlaticisesler.ui.base.BaseFragment;
 public interface MainView {
 
     void setFragment(BaseFragment fragment, boolean addToBackStack);
+
+    void changeTitle(String title);
+
+    void setDisplayHomeAsUpEnabled(boolean isEnabled);
 }

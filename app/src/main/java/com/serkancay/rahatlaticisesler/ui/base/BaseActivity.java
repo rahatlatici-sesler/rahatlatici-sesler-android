@@ -73,7 +73,7 @@ public class BaseActivity extends AppCompatActivity {
 
     public void replaceFragment(View view, Fragment fragment, boolean addToBackStack) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(view.getId(), fragment);
+        ft.replace(view.getId(), fragment, fragment.getClass().getSimpleName());
         if (addToBackStack) {
             ft.addToBackStack(fragment.getClass().getSimpleName());
         }

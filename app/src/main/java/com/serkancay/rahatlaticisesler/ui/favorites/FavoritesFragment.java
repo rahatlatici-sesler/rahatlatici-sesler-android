@@ -1,12 +1,11 @@
 package com.serkancay.rahatlaticisesler.ui.favorites;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import butterknife.BindView;
+import com.serkancay.rahatlaticisesler.R;
 import com.serkancay.rahatlaticisesler.data.network.AppApiHelper;
 import com.serkancay.rahatlaticisesler.data.network.model.SongListResponse.Song;
 import com.serkancay.rahatlaticisesler.ui.base.BaseFragment;
-import com.serkancay.rahatlaticisesler.R;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,6 +39,8 @@ public class FavoritesFragment extends BaseFragment implements FavoritesView {
 
     @Override
     public void onResumed() {
+        getNavigationPresenter().setTitle(getString(R.string.ui_favorites_title));
+        getNavigationPresenter().setDisplayHomeAsUpEnabled(false);
         mPresenter.onResume();
     }
 
@@ -60,7 +61,6 @@ public class FavoritesFragment extends BaseFragment implements FavoritesView {
 
     @Override
     public void updateFavorites(final List<Song> favoriteList) {
-        Log.e("TEST", "updating favorites " + favoriteList.size());
         mSongList.clear();
         mSongList.addAll(favoriteList);
         mFavoriteSongListAdapter.notifyDataSetChanged();

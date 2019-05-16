@@ -2,11 +2,12 @@ package com.serkancay.rahatlaticisesler.ui.main;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.widget.FrameLayout;
 import butterknife.BindView;
+import com.serkancay.rahatlaticisesler.R;
 import com.serkancay.rahatlaticisesler.ui.base.BaseActivity;
 import com.serkancay.rahatlaticisesler.ui.base.BaseFragment;
-import com.serkancay.rahatlaticisesler.R;
 import com.serkancay.rahatlaticisesler.ui.favorites.FavoritesFragment;
 import com.serkancay.rahatlaticisesler.ui.library.LibraryFragment;
 import com.serkancay.rahatlaticisesler.widget.BottomNavigationBar;
@@ -49,9 +50,28 @@ public class MainActivity extends BaseActivity implements MainView {
     }
 
     @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return super.onSupportNavigateUp();
+    }
+
+    @Override
     public void setFragment(final BaseFragment fragment, boolean addToBackStack) {
         fragment.attachPresenter(mPresenter);
         replaceFragment(flContent, fragment, addToBackStack);
+    }
+
+    @Override
+    public void changeTitle(final String title) {
+        setTitle(title);
+    }
+
+    @Override
+    public void setDisplayHomeAsUpEnabled(final boolean isEnabled) {
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(isEnabled);
+        }
     }
 
     private BottomNavigationBar.OnNavigationClickListener mOnNavigationClickListener
