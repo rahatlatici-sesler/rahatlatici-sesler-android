@@ -44,6 +44,8 @@ public class FavoriteSongListAdapter extends RecyclerView.Adapter<FavoriteHolder
 
     private Context mContext;
 
+    private Callback mCallback;
+
     public FavoriteSongListAdapter(Context context, List<Song> songList) {
         mInflater = LayoutInflater.from(context);
         mLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
@@ -64,12 +66,15 @@ public class FavoriteSongListAdapter extends RecyclerView.Adapter<FavoriteHolder
 
     @Override
     public void onBindViewHolder(@NonNull final FavoriteHolder holder, final int i) {
-        Song song = mSongList.get(i);
+        final Song song = mSongList.get(i);
         holder.tvName.setText(song.name);
         holder.tbFavorite.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
                 buttonView.startAnimation(mScaleAnimation);
+                if (mCallback != null) {
+                    mCallback.onFavoriteClicked(song, isChecked, i);
+                }
             }
         });
     }
@@ -84,6 +89,10 @@ public class FavoriteSongListAdapter extends RecyclerView.Adapter<FavoriteHolder
         super.onAttachedToRecyclerView(recyclerView);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.addItemDecoration(mItemDecoration);
+    }
+
+    public void setCallback(Callback callback) {
+        mCallback = callback;
     }
 
     public static class FavoriteHolder extends ViewHolder {
@@ -107,6 +116,11 @@ public class FavoriteSongListAdapter extends RecyclerView.Adapter<FavoriteHolder
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
+    }
+
+    public interface Callback {
+
+        void onFavoriteClicked(Song song, boolean isChecked, int position);
     }
 
 }

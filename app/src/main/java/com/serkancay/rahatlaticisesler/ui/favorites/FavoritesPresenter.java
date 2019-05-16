@@ -19,13 +19,18 @@ public class FavoritesPresenter {
     }
 
     void onResume() {
-
         List<Song> songList = mInteractor.getAllFavorites();
         mView.updateFavorites(songList);
     }
 
     void onDestroy() {
         mView = null;
+    }
+
+    void deleteFavorite(Song song, int position) {
+        mInteractor.deleteFavorite(song);
+        List<Song> songList = mInteractor.getAllFavorites();
+        mView.updateFavoritesWithNotifyRemoved(songList, position);
     }
 
 }

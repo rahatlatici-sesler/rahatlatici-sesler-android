@@ -17,4 +17,6 @@ public interface FavoritesView {
 
     void updateFavorites(List<Song> favoriteList);
 
+    void updateFavoritesWithNotifyRemoved(List<Song> favoriteList, int position);
+
 }

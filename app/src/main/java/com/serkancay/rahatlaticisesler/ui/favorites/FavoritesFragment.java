@@ -7,6 +7,7 @@ import com.serkancay.rahatlaticisesler.data.db.AppDatabase;
 import com.serkancay.rahatlaticisesler.data.db.entity.Song;
 import com.serkancay.rahatlaticisesler.data.network.AppApiHelper;
 import com.serkancay.rahatlaticisesler.ui.base.BaseFragment;
+import com.serkancay.rahatlaticisesler.ui.favorites.FavoriteSongListAdapter.Callback;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +35,7 @@ public class FavoritesFragment extends BaseFragment implements FavoritesView {
     public void onCreated() {
         mSongList = new ArrayList<>();
         mFavoriteSongListAdapter = new FavoriteSongListAdapter(context, mSongList);
+        mFavoriteSongListAdapter.setCallback(mCallback);
         rvSongs.setAdapter(mFavoriteSongListAdapter);
         mPresenter = new FavoritesPresenter(this,
                 new FavoritesInteractor(new AppApiHelper(), AppDatabase.getDatabase(context)));
@@ -67,5 +69,19 @@ public class FavoritesFragment extends BaseFragment implements FavoritesView {
         mSongList.addAll(favoriteList);
         mFavoriteSongListAdapter.notifyDataSetChanged();
     }
+
+    @Override
+    public void updateFavoritesWithNotifyRemoved(final List<Song> favoriteList, final int position) {
+        mSongList.clear();
+        mSongList.addAll(favoriteList);
+        mFavoriteSongListAdapter.notifyItemRemoved(position);
+    }
+
+    private Callback mCallback = new Callback() {
+        @Override
+        public void onFavoriteClicked(final Song song, final boolean isChecked, final int position) {
+            mPresenter.deleteFavorite(song, position);
+        }
+    };
 
 }
