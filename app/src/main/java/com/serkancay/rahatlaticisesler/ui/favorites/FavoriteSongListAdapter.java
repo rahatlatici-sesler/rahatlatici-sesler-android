@@ -18,7 +18,7 @@ import android.widget.ToggleButton;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.serkancay.rahatlaticisesler.R;
-import com.serkancay.rahatlaticisesler.data.network.model.SongListResponse.Song;
+import com.serkancay.rahatlaticisesler.data.db.entity.Song;
 import com.serkancay.rahatlaticisesler.ui.favorites.FavoriteSongListAdapter.FavoriteHolder;
 import com.serkancay.rahatlaticisesler.util.AnimationUtil;
 import com.serkancay.rahatlaticisesler.util.ColorUtil;
@@ -65,7 +65,7 @@ public class FavoriteSongListAdapter extends RecyclerView.Adapter<FavoriteHolder
     @Override
     public void onBindViewHolder(@NonNull final FavoriteHolder holder, final int i) {
         Song song = mSongList.get(i);
-        holder.tvName.setText(song.getName());
+        holder.tvName.setText(song.name);
         holder.tbFavorite.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {

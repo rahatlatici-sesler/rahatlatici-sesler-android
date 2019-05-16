@@ -53,7 +53,7 @@
         android:layout_height="48dp"
         android:layout_marginLeft="@dimen/medium_padding"
         android:background="@drawable/selector_favorite_button"
-        android:checked="false"
+        android:checked="true"
         android:text=""
         android:textOff=""
         android:textOn="" />
