@@ -1,8 +1,8 @@
 package com.serkancay.rahatlaticisesler.ui.splash;
 
 import android.os.Handler;
-import android.util.Log;
 import com.serkancay.rahatlaticisesler.data.db.entity.Song;
+import com.serkancay.rahatlaticisesler.util.L;
 import java.util.List;
 
 /**
@@ -23,15 +23,13 @@ public class SplashPresenter {
     }
 
     /**
-     *
      * Favoriler servis tarafinda sabit oldugu icin eger veritabaninda favori yoksa servisten favori listesi
      * alinip veritabanina kaydediliyor.
-     *
-     * */
+     */
     public void onResume() {
-        List<Song> songList =  mInteractor.getAllFavorites();
+        List<Song> songList = mInteractor.getAllFavorites();
         if (songList.isEmpty()) {
-            Log.d("Presenter", "Song list empty");
+            L.d("Song list empty");
         }
     }
 
