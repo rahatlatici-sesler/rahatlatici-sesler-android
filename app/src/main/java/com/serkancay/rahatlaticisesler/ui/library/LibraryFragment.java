@@ -6,6 +6,7 @@ import com.serkancay.rahatlaticisesler.R;
 import com.serkancay.rahatlaticisesler.data.network.AppApiHelper;
 import com.serkancay.rahatlaticisesler.data.network.model.CategoryListResponse.Category;
 import com.serkancay.rahatlaticisesler.ui.base.BaseFragment;
+import com.serkancay.rahatlaticisesler.ui.library.CategoryListAdapter.Callback;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +34,7 @@ public class LibraryFragment extends BaseFragment implements LibraryView {
     public void onCreated() {
         mCategoryList = new ArrayList<>();
         mCategoryListAdapter = new CategoryListAdapter(context, mCategoryList);
+        mCategoryListAdapter.setCallback(mCallback);
         rvCategories.setAdapter(mCategoryListAdapter);
         mPresenter = new LibraryPresenter(this, new LibraryInteractor(new AppApiHelper()));
     }
@@ -68,4 +70,11 @@ public class LibraryFragment extends BaseFragment implements LibraryView {
     public void navigateToDetailScreen(final Category category) {
 
     }
+
+    private Callback mCallback = new Callback() {
+        @Override
+        public void onCategoryClicked(final Category category) {
+            mPresenter.navigate(category);
+        }
+    };
 }

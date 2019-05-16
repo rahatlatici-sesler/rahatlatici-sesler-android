@@ -1,6 +1,7 @@
 package com.serkancay.rahatlaticisesler.ui.library;
 
 import com.serkancay.rahatlaticisesler.data.network.model.CategoryListResponse;
+import com.serkancay.rahatlaticisesler.data.network.model.CategoryListResponse.Category;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
@@ -45,6 +46,10 @@ public class LibraryPresenter {
 
     public void onDestroy() {
         mView = null;
+    }
+
+    public void navigate(Category category) {
+        mView.navigateToDetailScreen(category);
     }
 
 }

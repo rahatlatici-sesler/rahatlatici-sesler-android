@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -38,6 +39,8 @@ public class CategoryListAdapter extends Adapter<CategoryHolder> {
 
     private PicassoHelper mPicasso;
 
+    private Callback mCallback;
+
     public CategoryListAdapter(Context context, List<Category> categoryList) {
         mCategoryList = categoryList;
         mInflater = LayoutInflater.from(context);
@@ -56,9 +59,17 @@ public class CategoryListAdapter extends Adapter<CategoryHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull final CategoryHolder categoryHolder, final int i) {
-        Category category = mCategoryList.get(i);
+        final Category category = mCategoryList.get(i);
         mPicasso.load(categoryHolder.ivBackground, category.getImage());
         categoryHolder.tvName.setText(category.getName());
+        categoryHolder.flRootButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                if (mCallback != null) {
+                    mCallback.onCategoryClicked(category);
+                }
+            }
+        });
     }
 
     @Override
@@ -70,6 +81,10 @@ public class CategoryListAdapter extends Adapter<CategoryHolder> {
     public void onAttachedToRecyclerView(@NonNull final RecyclerView recyclerView) {
         super.onAttachedToRecyclerView(recyclerView);
         recyclerView.setLayoutManager(mLayoutManager);
+    }
+
+    public void setCallback(Callback callback) {
+        mCallback = callback;
     }
 
     public static class CategoryHolder extends ViewHolder {
@@ -87,6 +102,11 @@ public class CategoryListAdapter extends Adapter<CategoryHolder> {
             super(view);
             ButterKnife.bind(this, view);
         }
+    }
+
+    public interface Callback {
+
+        void onCategoryClicked(Category category);
     }
 
 
