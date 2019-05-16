@@ -1,5 +1,7 @@
 package com.serkancay.rahatlaticisesler.ui.splash;
 
+import com.serkancay.rahatlaticisesler.data.db.AppDatabase;
+import com.serkancay.rahatlaticisesler.data.network.AppApiHelper;
 import com.serkancay.rahatlaticisesler.ui.base.BaseActivity;
 import com.serkancay.rahatlaticisesler.ui.main.MainActivity;
 
@@ -13,8 +15,14 @@ public class SplashActivity extends BaseActivity implements SplashView {
 
     @Override
     public void onCreated() {
-        mPresenter = new SplashPresenter(this);
-        mPresenter.finishWithDelay();
+        mPresenter = new SplashPresenter(this,
+                new SplashInteractor(new AppApiHelper(), AppDatabase.getDatabase(context)));
+        //mPresenter.finishWithDelay();
+    }
+
+    @Override
+    public void onResumed() {
+        mPresenter.onResume();
     }
 
     @Override

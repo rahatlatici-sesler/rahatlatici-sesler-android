@@ -3,6 +3,7 @@ package com.serkancay.rahatlaticisesler.ui.favorites;
 import android.support.v7.widget.RecyclerView;
 import butterknife.BindView;
 import com.serkancay.rahatlaticisesler.R;
+import com.serkancay.rahatlaticisesler.data.db.AppDatabase;
 import com.serkancay.rahatlaticisesler.data.network.AppApiHelper;
 import com.serkancay.rahatlaticisesler.data.network.model.SongListResponse.Song;
 import com.serkancay.rahatlaticisesler.ui.base.BaseFragment;
@@ -34,7 +35,8 @@ public class FavoritesFragment extends BaseFragment implements FavoritesView {
         mSongList = new ArrayList<>();
         mFavoriteSongListAdapter = new FavoriteSongListAdapter(context, mSongList);
         rvSongs.setAdapter(mFavoriteSongListAdapter);
-        mPresenter = new FavoritesPresenter(this, new FavoritesInteractor(new AppApiHelper()));
+        mPresenter = new FavoritesPresenter(this,
+                new FavoritesInteractor(new AppApiHelper(), AppDatabase.getDatabase(context)));
     }
 
     @Override

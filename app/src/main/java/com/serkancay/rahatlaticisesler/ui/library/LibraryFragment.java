@@ -3,6 +3,7 @@ package com.serkancay.rahatlaticisesler.ui.library;
 import android.support.v7.widget.RecyclerView;
 import butterknife.BindView;
 import com.serkancay.rahatlaticisesler.R;
+import com.serkancay.rahatlaticisesler.data.db.AppDatabase;
 import com.serkancay.rahatlaticisesler.data.network.AppApiHelper;
 import com.serkancay.rahatlaticisesler.data.network.model.CategoryListResponse.Category;
 import com.serkancay.rahatlaticisesler.ui.base.BaseFragment;
@@ -42,7 +43,8 @@ public class LibraryFragment extends BaseFragment implements LibraryView {
         mCategoryListAdapter = new CategoryListAdapter(context, mCategoryList);
         mCategoryListAdapter.setCallback(mCallback);
         rvCategories.setAdapter(mCategoryListAdapter);
-        mPresenter = new LibraryPresenter(this, new LibraryInteractor(new AppApiHelper()));
+        mPresenter = new LibraryPresenter(this,
+                new LibraryInteractor(new AppApiHelper(), AppDatabase.getDatabase(context)));
     }
 
     @Override

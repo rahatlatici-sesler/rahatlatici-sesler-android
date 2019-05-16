@@ -3,6 +3,7 @@ package com.serkancay.rahatlaticisesler.ui.library.detail;
 import android.support.v7.widget.RecyclerView;
 import butterknife.BindView;
 import com.serkancay.rahatlaticisesler.R;
+import com.serkancay.rahatlaticisesler.data.db.AppDatabase;
 import com.serkancay.rahatlaticisesler.data.network.AppApiHelper;
 import com.serkancay.rahatlaticisesler.data.network.model.CategoryListResponse.Category;
 import com.serkancay.rahatlaticisesler.data.network.model.SongListResponse.Song;
@@ -37,7 +38,8 @@ public class LibraryDetailFragment extends BaseFragment implements LibraryDetail
         mSongList = new ArrayList<>();
         mSongListAdapter = new SongListAdapter(context, mSongList);
         rvSongs.setAdapter(mSongListAdapter);
-        mPresenter = new LibraryDetailPresenter(this, new LibraryDetailInteractor(new AppApiHelper()));
+        mPresenter = new LibraryDetailPresenter(this,
+                new LibraryDetailInteractor(new AppApiHelper(), AppDatabase.getDatabase(context)));
         if (mCategory != null) {
             mPresenter.setSongPath(mCategory.getSongsPath());
         }

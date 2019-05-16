@@ -1,5 +1,6 @@
 package com.serkancay.rahatlaticisesler.ui.favorites;
 
+import com.serkancay.rahatlaticisesler.data.db.AppDatabase;
 import com.serkancay.rahatlaticisesler.data.network.ApiHelper;
 import com.serkancay.rahatlaticisesler.data.network.model.SongListResponse;
 import com.serkancay.rahatlaticisesler.ui.base.BaseInteractor;
@@ -11,8 +12,8 @@ import io.reactivex.Observable;
 
 public class FavoritesInteractor extends BaseInteractor {
 
-    public FavoritesInteractor(ApiHelper apiHelper) {
-        super(apiHelper);
+    public FavoritesInteractor(ApiHelper apiHelper, AppDatabase database) {
+        super(apiHelper, database);
     }
 
     public Observable<SongListResponse> getFavoriteListApiCall() {

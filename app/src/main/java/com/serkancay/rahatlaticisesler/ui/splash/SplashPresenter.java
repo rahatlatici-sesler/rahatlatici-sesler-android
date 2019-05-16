@@ -1,6 +1,9 @@
 package com.serkancay.rahatlaticisesler.ui.splash;
 
 import android.os.Handler;
+import android.util.Log;
+import com.serkancay.rahatlaticisesler.data.db.entity.Song;
+import java.util.List;
 
 /**
  * Created by S.Serkan Cay on 15.05.2019
@@ -12,8 +15,24 @@ public class SplashPresenter {
 
     private SplashView mView;
 
-    public SplashPresenter(SplashView view) {
+    private SplashInteractor mInteractor;
+
+    public SplashPresenter(SplashView view, SplashInteractor interactor) {
         mView = view;
+        mInteractor = interactor;
+    }
+
+    /**
+     *
+     * Favoriler servis tarafinda sabit oldugu icin eger veritabaninda favori yoksa servisten favori listesi
+     * alinip veritabanina kaydediliyor.
+     *
+     * */
+    public void onResume() {
+        List<Song> songList =  mInteractor.getAllFavorites();
+        if (songList.isEmpty()) {
+            Log.d("Presenter", "Song list empty");
+        }
     }
 
     public void finishWithDelay() {
