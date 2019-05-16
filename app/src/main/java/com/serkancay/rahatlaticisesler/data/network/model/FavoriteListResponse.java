@@ -12,6 +12,10 @@ public class FavoriteListResponse {
     @SerializedName("songs")
     private List<Song> mFavoriteSongs;
 
+    public List<Song> getFavoriteList() {
+        return mFavoriteSongs;
+    }
+
     public static class Song {
 
         @SerializedName("id")

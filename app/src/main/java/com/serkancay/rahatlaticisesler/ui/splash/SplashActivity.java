@@ -1,6 +1,6 @@
 package com.serkancay.rahatlaticisesler.ui.splash;
 
-import com.serkancay.rahatlaticisesler.BaseActivity;
+import com.serkancay.rahatlaticisesler.ui.base.BaseActivity;
 import com.serkancay.rahatlaticisesler.ui.main.MainActivity;
 
 /**

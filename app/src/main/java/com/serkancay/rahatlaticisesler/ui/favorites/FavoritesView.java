@@ -1,5 +1,6 @@
 package com.serkancay.rahatlaticisesler.ui.favorites;
 
+import com.serkancay.rahatlaticisesler.data.network.model.FavoriteListResponse.Song;
 import java.util.List;
 
 /**
@@ -12,6 +13,6 @@ public interface FavoritesView {
 
     void hideProgress();
 
-    void setItems(List<String> items);
+    void updateFavorites(List<Song> favoriteList);
 
 }

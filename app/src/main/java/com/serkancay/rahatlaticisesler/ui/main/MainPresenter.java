@@ -1,6 +1,6 @@
 package com.serkancay.rahatlaticisesler.ui.main;
 
-import com.serkancay.rahatlaticisesler.BaseFragment;
+import com.serkancay.rahatlaticisesler.ui.base.BaseFragment;
 import com.serkancay.rahatlaticisesler.ui.favorites.FavoritesFragment;
 import com.serkancay.rahatlaticisesler.ui.library.LibraryFragment;
 

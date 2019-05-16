@@ -1,9 +1,13 @@
 package com.serkancay.rahatlaticisesler.ui.favorites;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import butterknife.BindView;
-import com.serkancay.rahatlaticisesler.BaseFragment;
+import com.serkancay.rahatlaticisesler.data.network.AppApiHelper;
+import com.serkancay.rahatlaticisesler.data.network.model.FavoriteListResponse.Song;
+import com.serkancay.rahatlaticisesler.ui.base.BaseFragment;
 import com.serkancay.rahatlaticisesler.R;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,7 +21,9 @@ public class FavoritesFragment extends BaseFragment implements FavoritesView {
 
     private FavoritesPresenter mPresenter;
 
-    private FavoriteSongListAdapter mSongListAdapter;
+    private FavoriteSongListAdapter mFavoriteSongListAdapter;
+
+    private List<Song> mSongList;
 
     @Override
     public int getLayoutId() {
@@ -26,9 +32,10 @@ public class FavoritesFragment extends BaseFragment implements FavoritesView {
 
     @Override
     public void onCreated() {
-        mPresenter = new FavoritesPresenter(this, new FetchFavoritesInteractor());
-        mSongListAdapter = new FavoriteSongListAdapter(context);
-        rvSongs.setAdapter(mSongListAdapter);
+        mSongList = new ArrayList<>();
+        mFavoriteSongListAdapter = new FavoriteSongListAdapter(context, mSongList);
+        rvSongs.setAdapter(mFavoriteSongListAdapter);
+        mPresenter = new FavoritesPresenter(this, new FavoritesInteractor(new AppApiHelper()));
     }
 
     @Override
@@ -52,6 +59,11 @@ public class FavoritesFragment extends BaseFragment implements FavoritesView {
     }
 
     @Override
-    public void setItems(final List<String> items) {
+    public void updateFavorites(final List<Song> favoriteList) {
+        Log.e("TEST", "updating favorites " + favoriteList.size());
+        mSongList.clear();
+        mSongList.addAll(favoriteList);
+        mFavoriteSongListAdapter.notifyDataSetChanged();
     }
+
 }

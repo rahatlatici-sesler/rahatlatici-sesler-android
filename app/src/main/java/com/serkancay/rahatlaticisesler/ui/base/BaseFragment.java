@@ -1,4 +1,4 @@
-package com.serkancay.rahatlaticisesler;
+package com.serkancay.rahatlaticisesler.ui.base;
 
 import android.content.Context;
 import android.os.Bundle;

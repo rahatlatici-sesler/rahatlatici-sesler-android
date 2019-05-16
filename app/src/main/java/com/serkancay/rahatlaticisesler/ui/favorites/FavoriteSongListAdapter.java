@@ -17,9 +17,12 @@ import android.widget.ToggleButton;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.serkancay.rahatlaticisesler.R;
+import com.serkancay.rahatlaticisesler.data.network.model.FavoriteListResponse;
+import com.serkancay.rahatlaticisesler.data.network.model.FavoriteListResponse.Song;
 import com.serkancay.rahatlaticisesler.ui.favorites.FavoriteSongListAdapter.FavoriteHolder;
 import com.serkancay.rahatlaticisesler.util.AnimationUtil;
 import com.serkancay.rahatlaticisesler.util.ColorUtil;
+import java.util.List;
 
 /**
  * Created by S.Serkan Cay on 16.05.2019
@@ -28,6 +31,8 @@ import com.serkancay.rahatlaticisesler.util.ColorUtil;
 public class FavoriteSongListAdapter extends RecyclerView.Adapter<FavoriteHolder> {
 
     private static final int RESOURCE = R.layout.item_favorite_song_list;
+
+    private List<Song> mSongList;
 
     private LayoutInflater mInflater;
 
@@ -39,12 +44,13 @@ public class FavoriteSongListAdapter extends RecyclerView.Adapter<FavoriteHolder
 
     private Context mContext;
 
-    public FavoriteSongListAdapter(Context context) {
+    public FavoriteSongListAdapter(Context context, List<Song> songList) {
         mInflater = LayoutInflater.from(context);
         mLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
         mItemDecoration = new DividerItemDecoration(context, DividerItemDecoration.VERTICAL);
         mContext = context;
         mScaleAnimation = AnimationUtil.createScaleAnimation(500);
+        mSongList = songList;
     }
 
     @NonNull
@@ -68,7 +74,7 @@ public class FavoriteSongListAdapter extends RecyclerView.Adapter<FavoriteHolder
 
     @Override
     public int getItemCount() {
-        return 20;
+        return mSongList.size();
     }
 
     @Override

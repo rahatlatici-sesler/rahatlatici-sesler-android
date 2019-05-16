@@ -14,7 +14,8 @@ public class AppApiHelper implements ApiHelper {
 
     @Override
     public Observable<FavoriteListResponse> getFavoriteListApiCall() {
-        return Rx2AndroidNetworking.get(ApiEndpoint.ENDPOINT_FAVORITE_LIST).build()
+        return Rx2AndroidNetworking.get(ApiEndpoint.ENDPOINT_FAVORITE_LIST)
+                .build()
                 .getObjectObservable(FavoriteListResponse.class);
     }
 }
