@@ -34,6 +34,8 @@ public class SongListAdapter extends Adapter<SongHolder> {
 
     private List<Song> mSongList;
 
+    private List<com.serkancay.rahatlaticisesler.data.db.entity.Song> mFavoriteSongList;
+
     private LayoutInflater mInflater;
 
     private LinearLayoutManager mLayoutManager;
@@ -44,8 +46,12 @@ public class SongListAdapter extends Adapter<SongHolder> {
 
     private ScaleAnimation mScaleAnimation;
 
-    public SongListAdapter(Context context, List<Song> songList) {
+    private Callback mCallback;
+
+    public SongListAdapter(Context context, List<Song> songList,
+            List<com.serkancay.rahatlaticisesler.data.db.entity.Song> favoriteSongList) {
         mSongList = songList;
+        mFavoriteSongList = favoriteSongList;
         mInflater = LayoutInflater.from(context);
         mLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
         mItemDecoration = new DividerItemDecoration(context, DividerItemDecoration.VERTICAL);
@@ -63,13 +69,25 @@ public class SongListAdapter extends Adapter<SongHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull final SongHolder songHolder, final int i) {
-        Song song = mSongList.get(i);
+        final Song song = mSongList.get(i);
+        songHolder.tbFavorite.setOnCheckedChangeListener(null);
+        for (com.serkancay.rahatlaticisesler.data.db.entity.Song favoriteSong : mFavoriteSongList) {
+            if (song.getId() == favoriteSong.id) {
+                songHolder.tbFavorite.setChecked(true);
+            }
+        }
         songHolder.tvName.setText(song.getName());
         songHolder.view.setBackgroundColor(ColorUtil.generateRandomColor());
         songHolder.tbFavorite.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
                 buttonView.startAnimation(mScaleAnimation);
+                if (mCallback != null) {
+                    mCallback.onFavoriteClicked(
+                            new com.serkancay.rahatlaticisesler.data.db.entity.Song(song.getId(), song.getName(),
+                                    song.getSongPath()),
+                            isChecked, i);
+                }
             }
         });
     }
@@ -84,6 +102,10 @@ public class SongListAdapter extends Adapter<SongHolder> {
         super.onAttachedToRecyclerView(recyclerView);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.addItemDecoration(mItemDecoration);
+    }
+
+    public void setCallback(Callback callback) {
+        mCallback = callback;
     }
 
     public static class SongHolder extends ViewHolder {
@@ -101,6 +123,12 @@ public class SongListAdapter extends Adapter<SongHolder> {
             super(view);
             ButterKnife.bind(this, view);
         }
+    }
+
+    public interface Callback {
+
+        void onFavoriteClicked(com.serkancay.rahatlaticisesler.data.db.entity.Song song, boolean isChecked,
+                int position);
     }
 
 

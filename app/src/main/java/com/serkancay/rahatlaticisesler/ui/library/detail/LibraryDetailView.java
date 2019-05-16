@@ -13,6 +13,7 @@ public interface LibraryDetailView {
 
     void hideProgress();
 
-    void updateSongs(List<Song> songList);
+    void updateSongs(List<Song> songList, List<com.serkancay.rahatlaticisesler.data.db.entity.Song> favoriteSongs);
 
+    void updateFavorites(List<com.serkancay.rahatlaticisesler.data.db.entity.Song> favoriteSongs, int position);
 }

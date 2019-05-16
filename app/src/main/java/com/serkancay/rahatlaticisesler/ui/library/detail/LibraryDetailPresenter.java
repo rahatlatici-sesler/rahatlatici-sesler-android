@@ -1,10 +1,12 @@
 package com.serkancay.rahatlaticisesler.ui.library.detail;
 
 import android.util.Log;
+import com.serkancay.rahatlaticisesler.data.db.entity.Song;
 import com.serkancay.rahatlaticisesler.data.network.model.SongListResponse;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
+import java.util.List;
 
 /**
  * Created by S.Serkan Cay on 16.05.2019
@@ -35,7 +37,7 @@ public class LibraryDetailPresenter {
                     @Override
                     public void accept(final SongListResponse songListResponse) throws Exception {
                         if (songListResponse != null && songListResponse.getSongList() != null) {
-                            mView.updateSongs(songListResponse.getSongList());
+                            mView.updateSongs(songListResponse.getSongList(), mInteractor.getAllFavorites());
                         }
                         mView.hideProgress();
                         Log.e("HATA", "liste geldi");
@@ -55,6 +57,18 @@ public class LibraryDetailPresenter {
 
     public void setSongPath(String songPath) {
         mSongPath = songPath;
+    }
+
+    void deleteFavorite(Song song, int position) {
+        mInteractor.deleteFavorite(song);
+        List<Song> songList = mInteractor.getAllFavorites();
+        mView.updateFavorites(songList, position);
+    }
+
+    void addFavorite(Song song, int position) {
+        mInteractor.addFavorite(song);
+        List<Song> songList = mInteractor.getAllFavorites();
+        mView.updateFavorites(songList, position);
     }
 
 }
