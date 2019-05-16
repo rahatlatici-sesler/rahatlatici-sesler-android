@@ -1,6 +1,6 @@
 package com.serkancay.rahatlaticisesler.ui.favorites;
 
-import com.serkancay.rahatlaticisesler.data.network.model.FavoriteListResponse;
+import com.serkancay.rahatlaticisesler.data.network.model.SongListResponse;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
@@ -26,11 +26,11 @@ public class FavoritesPresenter {
         }
 
         mInteractor.getFavoriteListApiCall().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<FavoriteListResponse>() {
+                .subscribe(new Consumer<SongListResponse>() {
                     @Override
-                    public void accept(final FavoriteListResponse favoriteListResponse) throws Exception {
-                        if (favoriteListResponse != null && favoriteListResponse.getFavoriteList() != null) {
-                            mView.updateFavorites(favoriteListResponse.getFavoriteList());
+                    public void accept(final SongListResponse favoriteListResponse) throws Exception {
+                        if (favoriteListResponse != null && favoriteListResponse.getSongList() != null) {
+                            mView.updateFavorites(favoriteListResponse.getSongList());
                         }
                         mView.hideProgress();
                     }

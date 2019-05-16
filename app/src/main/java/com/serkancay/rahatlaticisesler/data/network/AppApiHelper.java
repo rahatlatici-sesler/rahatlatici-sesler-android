@@ -2,7 +2,7 @@ package com.serkancay.rahatlaticisesler.data.network;
 
 import com.rx2androidnetworking.Rx2AndroidNetworking;
 import com.serkancay.rahatlaticisesler.data.network.model.CategoryListResponse;
-import com.serkancay.rahatlaticisesler.data.network.model.FavoriteListResponse;
+import com.serkancay.rahatlaticisesler.data.network.model.SongListResponse;
 import io.reactivex.Observable;
 import javax.inject.Singleton;
 
@@ -14,10 +14,10 @@ import javax.inject.Singleton;
 public class AppApiHelper implements ApiHelper {
 
     @Override
-    public Observable<FavoriteListResponse> getFavoriteListApiCall() {
+    public Observable<SongListResponse> getFavoriteListApiCall() {
         return Rx2AndroidNetworking.get(ApiEndpoint.ENDPOINT_FAVORITE_LIST)
                 .build()
-                .getObjectObservable(FavoriteListResponse.class);
+                .getObjectObservable(SongListResponse.class);
     }
 
     @Override
@@ -25,5 +25,12 @@ public class AppApiHelper implements ApiHelper {
         return Rx2AndroidNetworking.get(ApiEndpoint.ENDPOINT_CATEGORY_LIST)
                 .build()
                 .getObjectObservable(CategoryListResponse.class);
+    }
+
+    @Override
+    public Observable<SongListResponse> getCategoryDetailListApiCall(String songPath) {
+        return Rx2AndroidNetworking.get(ApiEndpoint.ENDPOINT_CATEGORY_LIST + "/" + songPath)
+                .build()
+                .getObjectObservable(SongListResponse.class);
     }
 }

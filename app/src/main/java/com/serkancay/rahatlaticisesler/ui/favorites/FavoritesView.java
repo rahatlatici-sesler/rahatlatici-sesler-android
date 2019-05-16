@@ -1,6 +1,6 @@
 package com.serkancay.rahatlaticisesler.ui.favorites;
 
-import com.serkancay.rahatlaticisesler.data.network.model.FavoriteListResponse.Song;
+import com.serkancay.rahatlaticisesler.data.network.model.SongListResponse.Song;
 import java.util.List;
 
 /**

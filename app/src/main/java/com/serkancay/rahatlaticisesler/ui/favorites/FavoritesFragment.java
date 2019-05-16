@@ -4,7 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import butterknife.BindView;
 import com.serkancay.rahatlaticisesler.data.network.AppApiHelper;
-import com.serkancay.rahatlaticisesler.data.network.model.FavoriteListResponse.Song;
+import com.serkancay.rahatlaticisesler.data.network.model.SongListResponse.Song;
 import com.serkancay.rahatlaticisesler.ui.base.BaseFragment;
 import com.serkancay.rahatlaticisesler.R;
 import java.util.ArrayList;

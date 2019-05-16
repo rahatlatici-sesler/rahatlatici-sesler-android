@@ -7,13 +7,13 @@ import java.util.List;
  * Created by S.Serkan Cay on 16.05.2019
  */
 
-public class FavoriteListResponse {
+public class SongListResponse {
 
     @SerializedName("songs")
-    private List<Song> mFavoriteSongs;
+    private List<Song> mSongs;
 
-    public List<Song> getFavoriteList() {
-        return mFavoriteSongs;
+    public List<Song> getSongList() {
+        return mSongs;
     }
 
     public static class Song {

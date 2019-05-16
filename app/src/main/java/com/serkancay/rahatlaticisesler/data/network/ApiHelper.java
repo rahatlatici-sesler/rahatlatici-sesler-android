@@ -1,7 +1,7 @@
 package com.serkancay.rahatlaticisesler.data.network;
 
 import com.serkancay.rahatlaticisesler.data.network.model.CategoryListResponse;
-import com.serkancay.rahatlaticisesler.data.network.model.FavoriteListResponse;
+import com.serkancay.rahatlaticisesler.data.network.model.SongListResponse;
 import io.reactivex.Observable;
 
 /**
@@ -10,9 +10,9 @@ import io.reactivex.Observable;
 
 public interface ApiHelper {
 
-    Observable<FavoriteListResponse> getFavoriteListApiCall();
+    Observable<SongListResponse> getFavoriteListApiCall();
 
     Observable<CategoryListResponse> getCategoryListApiCall();
 
-
+    Observable<SongListResponse> getCategoryDetailListApiCall(String songPath);
 }

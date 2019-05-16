@@ -1,7 +1,7 @@
 package com.serkancay.rahatlaticisesler.ui.favorites;
 
 import com.serkancay.rahatlaticisesler.data.network.ApiHelper;
-import com.serkancay.rahatlaticisesler.data.network.model.FavoriteListResponse;
+import com.serkancay.rahatlaticisesler.data.network.model.SongListResponse;
 import com.serkancay.rahatlaticisesler.ui.base.BaseInteractor;
 import io.reactivex.Observable;
 
@@ -15,7 +15,7 @@ public class FavoritesInteractor extends BaseInteractor {
         super(apiHelper);
     }
 
-    public Observable<FavoriteListResponse> getFavoriteListApiCall() {
+    public Observable<SongListResponse> getFavoriteListApiCall() {
         return getApiHelper().getFavoriteListApiCall();
     }
 
