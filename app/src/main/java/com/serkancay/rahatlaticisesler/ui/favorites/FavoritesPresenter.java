@@ -1,6 +1,6 @@
-package com.serkancay.rahatlaticisesler.favorites;
+package com.serkancay.rahatlaticisesler.ui.favorites;
 
-import com.serkancay.rahatlaticisesler.favorites.FetchFavoritesInteractor.OnFinishedListener;
+import com.serkancay.rahatlaticisesler.ui.favorites.FetchFavoritesInteractor.OnFinishedListener;
 import java.util.List;
 
 /**

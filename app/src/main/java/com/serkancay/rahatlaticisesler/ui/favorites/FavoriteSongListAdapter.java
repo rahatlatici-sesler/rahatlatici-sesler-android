@@ -1,4 +1,4 @@
-package com.serkancay.rahatlaticisesler.favorites;
+package com.serkancay.rahatlaticisesler.ui.favorites;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -12,13 +12,12 @@ import android.view.ViewGroup;
 import android.view.animation.ScaleAnimation;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.ToggleButton;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.serkancay.rahatlaticisesler.R;
-import com.serkancay.rahatlaticisesler.favorites.FavoriteSongListAdapter.FavoriteHolder;
+import com.serkancay.rahatlaticisesler.ui.favorites.FavoriteSongListAdapter.FavoriteHolder;
 import com.serkancay.rahatlaticisesler.util.AnimationUtil;
 import com.serkancay.rahatlaticisesler.util.ColorUtil;
 

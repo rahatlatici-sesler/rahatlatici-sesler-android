@@ -1,4 +1,4 @@
-package com.serkancay.rahatlaticisesler.main;
+package com.serkancay.rahatlaticisesler.ui.main;
 
 import android.content.Context;
 import android.content.Intent;

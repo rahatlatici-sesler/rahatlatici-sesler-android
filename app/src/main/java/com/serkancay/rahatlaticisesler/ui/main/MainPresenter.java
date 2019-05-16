@@ -1,8 +1,8 @@
-package com.serkancay.rahatlaticisesler.main;
+package com.serkancay.rahatlaticisesler.ui.main;
 
 import com.serkancay.rahatlaticisesler.BaseFragment;
-import com.serkancay.rahatlaticisesler.favorites.FavoritesFragment;
-import com.serkancay.rahatlaticisesler.library.LibraryFragment;
+import com.serkancay.rahatlaticisesler.ui.favorites.FavoritesFragment;
+import com.serkancay.rahatlaticisesler.ui.library.LibraryFragment;
 
 /**
  * Created by S.Serkan Cay on 15.05.2019

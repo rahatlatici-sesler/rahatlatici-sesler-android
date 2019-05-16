@@ -1,4 +1,4 @@
-package com.serkancay.rahatlaticisesler.main;
+package com.serkancay.rahatlaticisesler.ui.main;
 
 import com.serkancay.rahatlaticisesler.BaseFragment;
 

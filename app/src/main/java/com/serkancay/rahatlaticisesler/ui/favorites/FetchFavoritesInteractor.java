@@ -1,4 +1,4 @@
-package com.serkancay.rahatlaticisesler.favorites;
+package com.serkancay.rahatlaticisesler.ui.favorites;
 
 import android.os.Handler;
 import java.util.Arrays;

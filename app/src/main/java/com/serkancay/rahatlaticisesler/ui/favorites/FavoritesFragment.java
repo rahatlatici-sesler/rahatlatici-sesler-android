@@ -1,12 +1,10 @@
-package com.serkancay.rahatlaticisesler.favorites;
+package com.serkancay.rahatlaticisesler.ui.favorites;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import butterknife.BindView;
 import com.serkancay.rahatlaticisesler.BaseFragment;
 import com.serkancay.rahatlaticisesler.R;
 import java.util.List;
-import java.util.logging.Logger;
 
 /**
  * Created by S.Serkan Cay on 15.05.2019

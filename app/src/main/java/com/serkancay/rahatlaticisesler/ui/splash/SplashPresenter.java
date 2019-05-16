@@ -1,4 +1,4 @@
-package com.serkancay.rahatlaticisesler.splash;
+package com.serkancay.rahatlaticisesler.ui.splash;
 
 import android.os.Handler;
 

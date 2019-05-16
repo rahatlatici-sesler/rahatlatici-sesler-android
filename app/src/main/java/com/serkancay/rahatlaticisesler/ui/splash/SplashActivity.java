@@ -1,7 +1,7 @@
-package com.serkancay.rahatlaticisesler.splash;
+package com.serkancay.rahatlaticisesler.ui.splash;
 
 import com.serkancay.rahatlaticisesler.BaseActivity;
-import com.serkancay.rahatlaticisesler.main.MainActivity;
+import com.serkancay.rahatlaticisesler.ui.main.MainActivity;
 
 /**
  * Created by S.Serkan Cay on 15.05.2019
