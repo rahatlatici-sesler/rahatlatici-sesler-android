@@ -37,4 +37,11 @@ dependencies {
     // UI
     implementation 'com.jakewharton:butterknife:8.7.0'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.7.0'
+
+    // Networking
+    implementation "com.amitshekhar.android:rx2-android-networking:1.0.2"
+
+    // Dependency Injection
+    implementation 'javax.inject:javax.inject:1'
+
 }
