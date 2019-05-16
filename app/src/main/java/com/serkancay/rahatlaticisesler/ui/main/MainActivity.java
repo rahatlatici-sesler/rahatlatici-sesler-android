@@ -7,6 +7,8 @@ import butterknife.BindView;
 import com.serkancay.rahatlaticisesler.ui.base.BaseActivity;
 import com.serkancay.rahatlaticisesler.ui.base.BaseFragment;
 import com.serkancay.rahatlaticisesler.R;
+import com.serkancay.rahatlaticisesler.ui.favorites.FavoritesFragment;
+import com.serkancay.rahatlaticisesler.ui.library.LibraryFragment;
 import com.serkancay.rahatlaticisesler.widget.BottomNavigationBar;
 import com.serkancay.rahatlaticisesler.widget.BottomNavigationBar.OnNavigationClickListener;
 
@@ -22,6 +24,10 @@ public class MainActivity extends BaseActivity implements MainView {
     @BindView(R.id.bottomNavigationBar)
     BottomNavigationBar bottomNavigationBar;
 
+    private FavoritesFragment frFavorites;
+
+    private LibraryFragment frLibrary;
+
     private MainPresenter mPresenter;
 
     @Override
@@ -31,8 +37,10 @@ public class MainActivity extends BaseActivity implements MainView {
 
     @Override
     public void onCreated() {
+        frFavorites = new FavoritesFragment();
+        frLibrary = new LibraryFragment();
         mPresenter = new MainPresenter(this);
-        mPresenter.showFavoritesFragment();
+        mPresenter.addFragment(frFavorites, false);
     }
 
     @Override
@@ -41,8 +49,9 @@ public class MainActivity extends BaseActivity implements MainView {
     }
 
     @Override
-    public void setFragment(final BaseFragment fragment) {
-        replaceFragment(flContent, fragment, false);
+    public void setFragment(final BaseFragment fragment, boolean addToBackStack) {
+        fragment.attachPresenter(mPresenter);
+        replaceFragment(flContent, fragment, addToBackStack);
     }
 
     private BottomNavigationBar.OnNavigationClickListener mOnNavigationClickListener
@@ -50,9 +59,9 @@ public class MainActivity extends BaseActivity implements MainView {
         @Override
         public void onNavigationClick(final int whichMenu) {
             if (BottomNavigationBar.MENU_FAVORITES == whichMenu) {
-                mPresenter.showFavoritesFragment();
+                mPresenter.addFragment(frFavorites, false);
             } else if (BottomNavigationBar.MENU_LIBRARY == whichMenu) {
-                mPresenter.showLibraryFragment();
+                mPresenter.addFragment(frLibrary, false);
             }
         }
     };

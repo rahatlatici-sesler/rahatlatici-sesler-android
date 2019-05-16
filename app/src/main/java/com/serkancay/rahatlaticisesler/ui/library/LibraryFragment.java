@@ -7,6 +7,7 @@ import com.serkancay.rahatlaticisesler.data.network.AppApiHelper;
 import com.serkancay.rahatlaticisesler.data.network.model.CategoryListResponse.Category;
 import com.serkancay.rahatlaticisesler.ui.base.BaseFragment;
 import com.serkancay.rahatlaticisesler.ui.library.CategoryListAdapter.Callback;
+import com.serkancay.rahatlaticisesler.ui.library.detail.LibraryDetailFargment;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,7 +69,7 @@ public class LibraryFragment extends BaseFragment implements LibraryView {
 
     @Override
     public void navigateToDetailScreen(final Category category) {
-
+        getPresenter().addFragment(new LibraryDetailFargment(), true);
     }
 
     private Callback mCallback = new Callback() {

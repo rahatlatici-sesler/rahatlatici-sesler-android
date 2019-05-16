@@ -8,5 +8,5 @@ import com.serkancay.rahatlaticisesler.ui.base.BaseFragment;
 
 public interface MainView {
 
-    void setFragment(BaseFragment fragment);
+    void setFragment(BaseFragment fragment, boolean addToBackStack);
 }

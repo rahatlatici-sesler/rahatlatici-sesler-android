@@ -9,18 +9,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import butterknife.ButterKnife;
+import com.serkancay.rahatlaticisesler.ui.base.FragmentNavigation.Presenter;
 
 /**
  * Created by S.Serkan Cay on 15.05.2019
  */
 
-public class BaseFragment extends Fragment {
+public class BaseFragment extends Fragment implements FragmentNavigation.View {
 
     private ViewGroup vgContainer;
 
     public Context context;
 
     public BaseActivity activity;
+
+    protected FragmentNavigation.Presenter mPresenter;
 
     public int getLayoutId() {
         return -1;
@@ -36,6 +39,10 @@ public class BaseFragment extends Fragment {
     }
 
     public void onDestroyed() {
+    }
+
+    public FragmentNavigation.Presenter getPresenter() {
+        return mPresenter;
     }
 
     @Nullable
@@ -68,5 +75,10 @@ public class BaseFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         onDestroyed();
+    }
+
+    @Override
+    public void attachPresenter(final Presenter presenter) {
+        mPresenter = presenter;
     }
 }
