@@ -29,6 +29,8 @@ public class MainActivity extends BaseActivity implements MainView {
 
     private LibraryFragment frLibrary;
 
+    private BaseFragment frActive;
+
     private MainPresenter mPresenter;
 
     @Override
@@ -56,7 +58,17 @@ public class MainActivity extends BaseActivity implements MainView {
     }
 
     @Override
+    public void onBackPressed() {
+        if (frActive == frFavorites || frActive == frLibrary) {
+            finish();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    @Override
     public void setFragment(final BaseFragment fragment, boolean addToBackStack) {
+        frActive = fragment;
         fragment.attachPresenter(mPresenter);
         replaceFragment(flContent, fragment, addToBackStack);
     }
