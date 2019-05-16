@@ -35,4 +35,9 @@ public class SplashActivity extends BaseActivity implements SplashView {
         MainActivity.start(context);
         finish();
     }
+
+    @Override
+    public void showError() {
+
+    }
 }

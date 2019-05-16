@@ -3,7 +3,9 @@ package com.serkancay.rahatlaticisesler.ui.splash;
 import com.serkancay.rahatlaticisesler.data.db.AppDatabase;
 import com.serkancay.rahatlaticisesler.data.db.entity.Song;
 import com.serkancay.rahatlaticisesler.data.network.ApiHelper;
+import com.serkancay.rahatlaticisesler.data.network.model.SongListResponse;
 import com.serkancay.rahatlaticisesler.ui.base.BaseInteractor;
+import io.reactivex.Observable;
 import java.util.List;
 
 /**
@@ -16,6 +18,11 @@ public class SplashInteractor extends BaseInteractor {
             final AppDatabase database) {
         super(apiHelper, database);
     }
+
+    public Observable<SongListResponse> getFavoriteListApiCall() {
+        return getApiHelper().getFavoriteListApiCall();
+    }
+
 
     public void saveAllFavorites(List<Song> songList) {
         getAppDatabase().songModel().insertAllFavorites(songList);

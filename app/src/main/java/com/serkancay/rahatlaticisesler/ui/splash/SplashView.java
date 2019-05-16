@@ -8,4 +8,6 @@ public interface SplashView {
 
     void navigateToHome();
 
+    void showError();
+
 }

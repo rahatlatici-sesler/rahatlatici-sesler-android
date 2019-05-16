@@ -2,7 +2,12 @@ package com.serkancay.rahatlaticisesler.ui.splash;
 
 import android.os.Handler;
 import com.serkancay.rahatlaticisesler.data.db.entity.Song;
+import com.serkancay.rahatlaticisesler.data.network.model.SongListResponse;
 import com.serkancay.rahatlaticisesler.util.L;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Consumer;
+import io.reactivex.schedulers.Schedulers;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,6 +35,32 @@ public class SplashPresenter {
         List<Song> songList = mInteractor.getAllFavorites();
         if (songList.isEmpty()) {
             L.d("Song list empty");
+            mInteractor.getFavoriteListApiCall().subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Consumer<SongListResponse>() {
+                        @Override
+                        public void accept(final SongListResponse favoriteListResponse) throws Exception {
+                            if (favoriteListResponse != null && favoriteListResponse.getSongList() != null) {
+                                List<SongListResponse.Song> networkSongList = favoriteListResponse.getSongList();
+                                List<Song> databaseSongList = new ArrayList<>();
+                                for (SongListResponse.Song networkSong : networkSongList) {
+                                    databaseSongList.add(new Song(networkSong.getId(), networkSong.getName(),
+                                            networkSong.getSongPath()));
+                                }
+                                mInteractor.saveAllFavorites(databaseSongList);
+                            }
+                            finishWithDelay();
+                        }
+                    }, new Consumer<Throwable>() {
+                        @Override
+                        public void accept(final Throwable throwable) throws Exception {
+                            mView.showError();
+                        }
+                    });
+
+        } else {
+            L.d("Song list already exists in database");
+            finishWithDelay();
         }
     }
 
