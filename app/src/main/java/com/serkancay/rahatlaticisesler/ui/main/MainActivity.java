@@ -58,15 +58,6 @@ public class MainActivity extends BaseActivity implements MainView {
     }
 
     @Override
-    public void onBackPressed() {
-        if (frActive == frFavorites || frActive == frLibrary) {
-            finish();
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-    @Override
     public void setFragment(final BaseFragment fragment, boolean addToBackStack) {
         frActive = fragment;
         fragment.attachPresenter(mPresenter);
@@ -91,8 +82,10 @@ public class MainActivity extends BaseActivity implements MainView {
         @Override
         public void onNavigationClick(final int whichMenu) {
             if (BottomNavigationBar.MENU_FAVORITES == whichMenu) {
+                clearBackStack();
                 mPresenter.addFragment(frFavorites, false);
             } else if (BottomNavigationBar.MENU_LIBRARY == whichMenu) {
+                clearBackStack();
                 mPresenter.addFragment(frLibrary, false);
             }
         }

@@ -32,14 +32,20 @@ public class LibraryPresenter {
                     @Override
                     public void accept(final CategoryListResponse categoryListResponse) throws Exception {
                         if (categoryListResponse != null && categoryListResponse.getCategoryList() != null) {
-                            mView.updateCategories(categoryListResponse.getCategoryList());
+                            if (mView != null) {
+                                mView.updateCategories(categoryListResponse.getCategoryList());
+                            }
                         }
-                        mView.hideProgress();
+                        if (mView != null) {
+                            mView.hideProgress();
+                        }
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(final Throwable throwable) throws Exception {
-                        mView.hideProgress();
+                        if (mView != null) {
+                            mView.hideProgress();
+                        }
                     }
                 });
     }
