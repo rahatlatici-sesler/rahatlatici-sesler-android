@@ -1,6 +1,7 @@
 package com.serkancay.rahatlaticisesler.data.network;
 
 import com.rx2androidnetworking.Rx2AndroidNetworking;
+import com.serkancay.rahatlaticisesler.data.network.model.CategoryListResponse;
 import com.serkancay.rahatlaticisesler.data.network.model.FavoriteListResponse;
 import io.reactivex.Observable;
 import javax.inject.Singleton;
@@ -17,5 +18,12 @@ public class AppApiHelper implements ApiHelper {
         return Rx2AndroidNetworking.get(ApiEndpoint.ENDPOINT_FAVORITE_LIST)
                 .build()
                 .getObjectObservable(FavoriteListResponse.class);
+    }
+
+    @Override
+    public Observable<CategoryListResponse> getCategoryListApiCall() {
+        return Rx2AndroidNetworking.get(ApiEndpoint.ENDPOINT_CATEGORY_LIST)
+                .build()
+                .getObjectObservable(CategoryListResponse.class);
     }
 }

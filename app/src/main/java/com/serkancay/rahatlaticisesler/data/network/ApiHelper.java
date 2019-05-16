@@ -1,5 +1,6 @@
 package com.serkancay.rahatlaticisesler.data.network;
 
+import com.serkancay.rahatlaticisesler.data.network.model.CategoryListResponse;
 import com.serkancay.rahatlaticisesler.data.network.model.FavoriteListResponse;
 import io.reactivex.Observable;
 
@@ -10,5 +11,8 @@ import io.reactivex.Observable;
 public interface ApiHelper {
 
     Observable<FavoriteListResponse> getFavoriteListApiCall();
+
+    Observable<CategoryListResponse> getCategoryListApiCall();
+
 
 }

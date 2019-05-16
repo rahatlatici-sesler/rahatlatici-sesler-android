@@ -10,6 +10,8 @@ public final class ApiEndpoint {
 
     public static final String ENDPOINT_FAVORITE_LIST = BuildConfig.BASE_URL + "/favorite_list.html";
 
+    public static final String ENDPOINT_CATEGORY_LIST = BuildConfig.BASE_URL + "/categories";
+
     private ApiEndpoint() {
     }
 
