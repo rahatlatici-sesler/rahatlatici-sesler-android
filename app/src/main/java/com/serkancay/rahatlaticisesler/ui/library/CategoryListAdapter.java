@@ -3,6 +3,7 @@ package com.serkancay.rahatlaticisesler.ui.library;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import com.serkancay.rahatlaticisesler.R;
 import com.serkancay.rahatlaticisesler.data.network.model.CategoryListResponse.Category;
+import com.serkancay.rahatlaticisesler.helper.PicassoHelper;
 import com.serkancay.rahatlaticisesler.ui.library.CategoryListAdapter.CategoryHolder;
 import java.util.List;
 
@@ -34,10 +36,14 @@ public class CategoryListAdapter extends Adapter<CategoryHolder> {
 
     private Context mContext;
 
+    private PicassoHelper mPicasso;
+
     public CategoryListAdapter(Context context, List<Category> categoryList) {
+        mCategoryList = categoryList;
         mInflater = LayoutInflater.from(context);
         mLayoutManager = new LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false);
         mContext = context;
+        mPicasso = new PicassoHelper(context);
     }
 
     @NonNull
@@ -50,12 +56,20 @@ public class CategoryListAdapter extends Adapter<CategoryHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull final CategoryHolder categoryHolder, final int i) {
-
+        Category category = mCategoryList.get(i);
+        mPicasso.load(categoryHolder.ivBackground, category.getImage());
+        categoryHolder.tvName.setText(category.getName());
     }
 
     @Override
     public int getItemCount() {
         return mCategoryList.size();
+    }
+
+    @Override
+    public void onAttachedToRecyclerView(@NonNull final RecyclerView recyclerView) {
+        super.onAttachedToRecyclerView(recyclerView);
+        recyclerView.setLayoutManager(mLayoutManager);
     }
 
     public static class CategoryHolder extends ViewHolder {

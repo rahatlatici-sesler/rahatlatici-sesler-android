@@ -30,6 +30,37 @@ public class CategoryListResponse {
         @SerializedName("songs_path")
         private String mSongsPath;
 
+        public int getId() {
+            return mId;
+        }
+
+        public void setId(final int id) {
+            mId = id;
+        }
+
+        public String getName() {
+            return mName;
+        }
+
+        public void setName(final String name) {
+            mName = name;
+        }
+
+        public String getImage() {
+            return mImage;
+        }
+
+        public void setImage(final String image) {
+            mImage = image;
+        }
+
+        public String getSongsPath() {
+            return mSongsPath;
+        }
+
+        public void setSongsPath(final String songsPath) {
+            mSongsPath = songsPath;
+        }
     }
 
 }
