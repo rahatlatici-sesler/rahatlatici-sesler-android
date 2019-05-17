@@ -14,6 +14,10 @@
     </item>
 
     <item
+        android:top="200dp"
+        android:bottom="200dp"
+        android:right="100dp"
+        android:left="100dp"
         android:width="100dp"
         android:height="100dp"
         android:gravity="center">

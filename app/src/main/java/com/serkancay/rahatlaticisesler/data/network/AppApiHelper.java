@@ -22,9 +22,11 @@ public class AppApiHelper implements ApiHelper {
 
     @Override
     public Observable<SongListResponse> getFavoriteListApiCall() {
+
         return Rx2AndroidNetworking.get(ApiEndpoint.ENDPOINT_FAVORITE_LIST)
                 .build()
                 .getObjectObservable(SongListResponse.class);
+
     }
 
     @Override
@@ -44,5 +46,4 @@ public class AppApiHelper implements ApiHelper {
     private AppApiHelper() {
     }
 
-    ;
 }

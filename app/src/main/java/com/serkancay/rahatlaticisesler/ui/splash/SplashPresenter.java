@@ -41,6 +41,7 @@ public class SplashPresenter {
                         @Override
                         public void accept(final SongListResponse favoriteListResponse) throws Exception {
                             if (favoriteListResponse != null && favoriteListResponse.getSongList() != null) {
+                                L.d("Favorite song list accept");
                                 List<SongListResponse.Song> networkSongList = favoriteListResponse.getSongList();
                                 List<Song> databaseSongList = new ArrayList<>();
                                 for (SongListResponse.Song networkSong : networkSongList) {
@@ -54,6 +55,7 @@ public class SplashPresenter {
                     }, new Consumer<Throwable>() {
                         @Override
                         public void accept(final Throwable throwable) throws Exception {
+                            L.d("Favorite song list error " + throwable.getMessage());
                             mView.showError();
                         }
                     });
