@@ -1,6 +1,8 @@
 package com.serkancay.rahatlaticisesler.ui.library.detail;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ProgressBar;
 import butterknife.BindView;
 import com.serkancay.rahatlaticisesler.R;
 import com.serkancay.rahatlaticisesler.data.db.AppDatabase;
@@ -20,6 +22,9 @@ public class LibraryDetailFragment extends BaseFragment implements LibraryDetail
 
     @BindView(R.id.rvSongs)
     RecyclerView rvSongs;
+
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
 
     private LibraryDetailPresenter mPresenter;
 
@@ -64,12 +69,14 @@ public class LibraryDetailFragment extends BaseFragment implements LibraryDetail
 
     @Override
     public void showProgress() {
-
+        progressBar.setVisibility(View.VISIBLE);
+        rvSongs.setVisibility(View.GONE);
     }
 
     @Override
     public void hideProgress() {
-
+        progressBar.setVisibility(View.GONE);
+        rvSongs.setVisibility(View.VISIBLE);
     }
 
     @Override
