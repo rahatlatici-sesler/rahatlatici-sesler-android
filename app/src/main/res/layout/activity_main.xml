@@ -13,6 +13,7 @@
         android:layout_weight="1" />
 
     <com.serkancay.rahatlaticisesler.widget.BottomNavigationBar
+        android:layout_marginTop="-3dp"
         android:id="@+id/bottomNavigationBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
