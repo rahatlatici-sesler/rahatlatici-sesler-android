@@ -82,6 +82,7 @@ public class FavoritesFragment extends BaseFragment implements FavoritesView {
         mSongList.clear();
         mSongList.addAll(favoriteList);
         mFavoriteSongListAdapter.notifyItemRemoved(position);
+        mFavoriteSongListAdapter.notifyItemRangeChanged(position, favoriteList.size());
     }
 
     private Callback mCallback = new Callback() {
