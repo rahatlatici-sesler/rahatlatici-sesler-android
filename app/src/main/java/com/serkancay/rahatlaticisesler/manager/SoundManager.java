@@ -55,6 +55,16 @@ public class SoundManager {
         }
     }
 
+    public void unloadSong(Song song) {
+        int index = isSongAlreadyExists(song);
+        if (index != -1) {
+            int poolId = mLoadedSongs.get(index).mPoolId;
+            mSoundPool.stop(poolId);
+            mSoundPool.unload(poolId);
+            mLoadedSongs.remove(index);
+        }
+    }
+
     private int loadSound(Song song) {
         Resources res = mContext.getResources();
         int resId = res.getIdentifier(song.song_path, "raw", mContext.getPackageName());

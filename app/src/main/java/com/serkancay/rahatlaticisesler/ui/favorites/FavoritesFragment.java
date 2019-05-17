@@ -86,6 +86,7 @@ public class FavoritesFragment extends BaseFragment implements FavoritesView {
     private Callback mCallback = new Callback() {
         @Override
         public void onFavoriteClicked(final Song song, final boolean isChecked, final int position) {
+            mSoundManager.unloadSong(song);
             mPresenter.deleteFavorite(song, position);
         }
 
