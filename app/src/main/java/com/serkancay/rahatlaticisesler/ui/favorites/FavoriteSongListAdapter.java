@@ -30,6 +30,7 @@ import java.util.List;
  * Created by S.Serkan Cay on 16.05.2019
  */
 
+// TODO refactoring
 public class FavoriteSongListAdapter extends RecyclerView.Adapter<FavoriteHolder> {
 
     private static final int RESOURCE = R.layout.item_favorite_song_list;
@@ -70,15 +71,16 @@ public class FavoriteSongListAdapter extends RecyclerView.Adapter<FavoriteHolder
     public void onBindViewHolder(@NonNull final FavoriteHolder holder, final int i) {
         final Song song = mSongList.get(i);
         holder.tvName.setText(song.name);
+        // Bind sirasinda listener tetiklenmesini onlemek icin null yapildi
         holder.tbPlayPause.setOnCheckedChangeListener(null);
         holder.seekBarVolume.setOnSeekBarChangeListener(null);
-        if (song.mIsPlaying) {
+        if (song.isPlaying) {
             holder.tbPlayPause.setChecked(true);
         } else {
             holder.tbPlayPause.setChecked(false);
         }
-        L.d("SeekBar init value to " + (int) (song.mVolume * 100f));
-        holder.seekBarVolume.setProgress((int) (song.mVolume * 100f));
+        L.d("SeekBar init value to " + (int) (song.volume * 100f));
+        holder.seekBarVolume.setProgress((int) (song.volume * 100f));
         holder.tbFavorite.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
@@ -93,10 +95,10 @@ public class FavoriteSongListAdapter extends RecyclerView.Adapter<FavoriteHolder
             public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
                 if (mCallback != null) {
                     if (isChecked) {
-                        song.mIsPlaying = true;
+                        song.isPlaying = true;
                         mCallback.onPlayClicked(song, i);
                     } else {
-                        song.mIsPlaying = false;
+                        song.isPlaying = false;
                         mCallback.onPauseClicked(song, i);
                     }
                 }
@@ -108,6 +110,7 @@ public class FavoriteSongListAdapter extends RecyclerView.Adapter<FavoriteHolder
                 if (mCallback != null) {
                     L.d("SeekBar progress" + progress);
                     float progressToFloat = progress / 100f;
+                    song.volume = progressToFloat;
                     mCallback.onVolumeChanged(song, progressToFloat);
                 }
             }

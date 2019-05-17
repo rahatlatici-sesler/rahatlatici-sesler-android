@@ -19,13 +19,13 @@ public class Song {
     public String song_path;
 
     @Ignore
-    public boolean mIsPlaying = false;
+    public boolean isPlaying = false;
 
     @Ignore
-    public int mPoolId = -1;
+    public int poolId = -1;
 
     @Ignore
-    public float mVolume = 0.5f;
+    public float volume = 0.5f;
 
     public Song(int id, String name, String song_path) {
         this.id = id;

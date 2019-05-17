@@ -34,14 +34,14 @@ public class SoundManager {
             mLoadedSongs.add(song);
             loadSound(song);
         } else {
-            mSoundPool.resume(mLoadedSongs.get(index).mPoolId);
+            mSoundPool.resume(mLoadedSongs.get(index).poolId);
         }
     }
 
     public void pauseSong(Song song) {
         int index = isSongAlreadyExists(song);
         if (index != -1) {
-            mSoundPool.pause(mLoadedSongs.get(index).mPoolId);
+            mSoundPool.pause(mLoadedSongs.get(index).poolId);
         }
     }
 
@@ -51,14 +51,14 @@ public class SoundManager {
     public void setVolume(Song song, float volume) {
         int index = isSongAlreadyExists(song);
         if (index != -1) {
-            mSoundPool.setVolume(mLoadedSongs.get(index).mPoolId, volume, volume);
+            mSoundPool.setVolume(mLoadedSongs.get(index).poolId, volume, volume);
         }
     }
 
     public void unloadSong(Song song) {
         int index = isSongAlreadyExists(song);
         if (index != -1) {
-            int poolId = mLoadedSongs.get(index).mPoolId;
+            int poolId = mLoadedSongs.get(index).poolId;
             mSoundPool.stop(poolId);
             mSoundPool.unload(poolId);
             mLoadedSongs.remove(index);
@@ -85,7 +85,7 @@ public class SoundManager {
     }
 
     private void playSound(Song song) {
-        mSoundPool.play(song.mPoolId, 1, 1, 1, -1, 1f);
+        mSoundPool.play(song.poolId, 1, 1, 1, -1, 1f);
     }
 
     private OnLoadCompleteListener mOnLoadCompleteListener = new OnLoadCompleteListener() {
@@ -93,7 +93,7 @@ public class SoundManager {
         public void onLoadComplete(final SoundPool soundPool, final int sampleId, final int status) {
             if (status == 0) {
                 if (mLoadedSongs.size() > 0) {
-                    mLoadedSongs.get(mLoadedSongs.size() - 1).mPoolId = sampleId;
+                    mLoadedSongs.get(mLoadedSongs.size() - 1).poolId = sampleId;
                     playSound(mLoadedSongs.get(mLoadedSongs.size() - 1));
                 }
             } else {
