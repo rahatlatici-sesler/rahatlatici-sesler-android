@@ -56,6 +56,7 @@ public class FavoritesFragment extends BaseFragment implements FavoritesView {
 
     @Override
     public void onDestroyed() {
+        mSoundManager.release();
         mPresenter.onDestroy();
     }
 

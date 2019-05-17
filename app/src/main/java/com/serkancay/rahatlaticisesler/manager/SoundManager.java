@@ -65,6 +65,10 @@ public class SoundManager {
         }
     }
 
+    public void release() {
+        mSoundPool.release();
+    }
+
     private int loadSound(Song song) {
         Resources res = mContext.getResources();
         int resId = res.getIdentifier(song.song_path, "raw", mContext.getPackageName());
