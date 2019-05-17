@@ -49,7 +49,7 @@ public class LibraryDetailFragment extends BaseFragment implements LibraryDetail
         mSongListAdapter.setCallback(mCallback);
         rvSongs.setAdapter(mSongListAdapter);
         mPresenter = new LibraryDetailPresenter(this,
-                new LibraryDetailInteractor(new AppApiHelper(), AppDatabase.getDatabase(context)));
+                new LibraryDetailInteractor(AppApiHelper.getApiHelper(), AppDatabase.getDatabase(context)));
         if (mCategory != null) {
             mPresenter.setSongPath(mCategory.getSongsPath());
         }

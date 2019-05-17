@@ -4,14 +4,21 @@ import com.rx2androidnetworking.Rx2AndroidNetworking;
 import com.serkancay.rahatlaticisesler.data.network.model.CategoryListResponse;
 import com.serkancay.rahatlaticisesler.data.network.model.SongListResponse;
 import io.reactivex.Observable;
-import javax.inject.Singleton;
 
 /**
  * Created by S.Serkan Cay on 16.05.2019
  */
 
-@Singleton
 public class AppApiHelper implements ApiHelper {
+
+    private static AppApiHelper sInstance;
+
+    public static AppApiHelper getApiHelper() {
+        if (sInstance == null) {
+            sInstance = new AppApiHelper();
+        }
+        return sInstance;
+    }
 
     @Override
     public Observable<SongListResponse> getFavoriteListApiCall() {
@@ -33,4 +40,9 @@ public class AppApiHelper implements ApiHelper {
                 .build()
                 .getObjectObservable(SongListResponse.class);
     }
+
+    private AppApiHelper() {
+    }
+
+    ;
 }

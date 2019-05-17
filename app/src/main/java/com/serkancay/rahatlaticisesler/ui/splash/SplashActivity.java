@@ -16,8 +16,7 @@ public class SplashActivity extends BaseActivity implements SplashView {
     @Override
     public void onCreated() {
         mPresenter = new SplashPresenter(this,
-                new SplashInteractor(new AppApiHelper(), AppDatabase.getDatabase(context)));
-        //mPresenter.finishWithDelay();
+                new SplashInteractor(AppApiHelper.getApiHelper(), AppDatabase.getDatabase(context)));
     }
 
     @Override

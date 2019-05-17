@@ -44,7 +44,7 @@ public class FavoritesFragment extends BaseFragment implements FavoritesView {
         mFavoriteSongListAdapter.setCallback(mCallback);
         rvSongs.setAdapter(mFavoriteSongListAdapter);
         mPresenter = new FavoritesPresenter(this,
-                new FavoritesInteractor(new AppApiHelper(), AppDatabase.getDatabase(context)));
+                new FavoritesInteractor(AppApiHelper.getApiHelper(), AppDatabase.getDatabase(context)));
     }
 
     @Override

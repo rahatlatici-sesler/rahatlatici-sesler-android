@@ -44,7 +44,7 @@ public class LibraryFragment extends BaseFragment implements LibraryView {
         mCategoryListAdapter.setCallback(mCallback);
         rvCategories.setAdapter(mCategoryListAdapter);
         mPresenter = new LibraryPresenter(this,
-                new LibraryInteractor(new AppApiHelper(), AppDatabase.getDatabase(context)));
+                new LibraryInteractor(AppApiHelper.getApiHelper(), AppDatabase.getDatabase(context)));
     }
 
     @Override
