@@ -23,7 +23,6 @@
             android:id="@+id/tvName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kus sesi 1"
             android:textColor="@color/black"
             android:textStyle="bold" />
 

@@ -8,7 +8,7 @@
     <ImageView
         android:id="@+id/ivBackground"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="150dp"
         android:scaleType="centerCrop" />
 
     <View
@@ -23,7 +23,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
         android:layout_margin="@dimen/small_padding"
-        android:text="Kus sesleri"
         android:textColor="@color/white"
         android:textSize="@dimen/title_text_size" />
 
