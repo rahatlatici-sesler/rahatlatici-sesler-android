@@ -1,6 +1,7 @@
 package com.serkancay.rahatlaticisesler.data.db.entity;
 
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 
 /**
@@ -16,6 +17,15 @@ public class Song {
     public String name;
 
     public String song_path;
+
+    @Ignore
+    public boolean mIsPlaying = false;
+
+    @Ignore
+    public int mPoolId = -1;
+
+    @Ignore
+    public float mVolume = 0.5f;
 
     public Song(int id, String name, String song_path) {
         this.id = id;

@@ -6,8 +6,10 @@ import com.serkancay.rahatlaticisesler.R;
 import com.serkancay.rahatlaticisesler.data.db.AppDatabase;
 import com.serkancay.rahatlaticisesler.data.db.entity.Song;
 import com.serkancay.rahatlaticisesler.data.network.AppApiHelper;
+import com.serkancay.rahatlaticisesler.manager.SoundManager;
 import com.serkancay.rahatlaticisesler.ui.base.BaseFragment;
 import com.serkancay.rahatlaticisesler.ui.favorites.FavoriteSongListAdapter.Callback;
+import com.serkancay.rahatlaticisesler.util.L;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +28,9 @@ public class FavoritesFragment extends BaseFragment implements FavoritesView {
 
     private List<Song> mSongList;
 
+    // TODO refactoring
+    private SoundManager mSoundManager;
+
     @Override
     public int getLayoutId() {
         return R.layout.fragment_favorites;
@@ -33,6 +38,7 @@ public class FavoritesFragment extends BaseFragment implements FavoritesView {
 
     @Override
     public void onCreated() {
+        mSoundManager = new SoundManager(context, 10);
         mSongList = new ArrayList<>();
         mFavoriteSongListAdapter = new FavoriteSongListAdapter(context, mSongList);
         mFavoriteSongListAdapter.setCallback(mCallback);
@@ -81,6 +87,22 @@ public class FavoritesFragment extends BaseFragment implements FavoritesView {
         @Override
         public void onFavoriteClicked(final Song song, final boolean isChecked, final int position) {
             mPresenter.deleteFavorite(song, position);
+        }
+
+        @Override
+        public void onPlayClicked(final Song song, final int position) {
+            mSoundManager.playSong(song);
+        }
+
+        @Override
+        public void onPauseClicked(final Song song, final int position) {
+            mSoundManager.pauseSong(song);
+        }
+
+        @Override
+        public void onVolumeChanged(final Song song, final float volume) {
+            L.d("Volume " + volume);
+            mSoundManager.setVolume(song, volume);
         }
     };
 

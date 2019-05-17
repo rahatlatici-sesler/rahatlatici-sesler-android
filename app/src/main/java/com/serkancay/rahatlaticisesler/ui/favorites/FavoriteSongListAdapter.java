@@ -13,6 +13,7 @@ import android.view.animation.ScaleAnimation;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 import butterknife.BindView;
@@ -22,6 +23,7 @@ import com.serkancay.rahatlaticisesler.data.db.entity.Song;
 import com.serkancay.rahatlaticisesler.ui.favorites.FavoriteSongListAdapter.FavoriteHolder;
 import com.serkancay.rahatlaticisesler.util.AnimationUtil;
 import com.serkancay.rahatlaticisesler.util.ColorUtil;
+import com.serkancay.rahatlaticisesler.util.L;
 import java.util.List;
 
 /**
@@ -68,6 +70,15 @@ public class FavoriteSongListAdapter extends RecyclerView.Adapter<FavoriteHolder
     public void onBindViewHolder(@NonNull final FavoriteHolder holder, final int i) {
         final Song song = mSongList.get(i);
         holder.tvName.setText(song.name);
+        holder.tbPlayPause.setOnCheckedChangeListener(null);
+        holder.seekBarVolume.setOnSeekBarChangeListener(null);
+        if (song.mIsPlaying) {
+            holder.tbPlayPause.setChecked(true);
+        } else {
+            holder.tbPlayPause.setChecked(false);
+        }
+        L.d("SeekBar init value to " + (int) (song.mVolume * 100f));
+        holder.seekBarVolume.setProgress((int) (song.mVolume * 100f));
         holder.tbFavorite.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
@@ -75,6 +86,40 @@ public class FavoriteSongListAdapter extends RecyclerView.Adapter<FavoriteHolder
                 if (mCallback != null) {
                     mCallback.onFavoriteClicked(song, isChecked, i);
                 }
+            }
+        });
+        holder.tbPlayPause.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(final CompoundButton buttonView, final boolean isChecked) {
+                if (mCallback != null) {
+                    if (isChecked) {
+                        song.mIsPlaying = true;
+                        mCallback.onPlayClicked(song, i);
+                    } else {
+                        song.mIsPlaying = false;
+                        mCallback.onPauseClicked(song, i);
+                    }
+                }
+            }
+        });
+        holder.seekBarVolume.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(final SeekBar seekBar, final int progress, final boolean fromUser) {
+                if (mCallback != null) {
+                    L.d("SeekBar progress" + progress);
+                    float progressToFloat = progress / 100f;
+                    mCallback.onVolumeChanged(song, progressToFloat);
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(final SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(final SeekBar seekBar) {
+
             }
         });
     }
@@ -121,6 +166,12 @@ public class FavoriteSongListAdapter extends RecyclerView.Adapter<FavoriteHolder
     public interface Callback {
 
         void onFavoriteClicked(Song song, boolean isChecked, int position);
+
+        void onPlayClicked(Song song, int position);
+
+        void onPauseClicked(Song song, int position);
+
+        void onVolumeChanged(Song song, float volume);
     }
 
 }

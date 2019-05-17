@@ -28,6 +28,7 @@
             android:textStyle="bold" />
 
         <SeekBar
+            android:max="100"
             android:id="@+id/seekBarVolume"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
