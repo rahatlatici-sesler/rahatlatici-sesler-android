@@ -10,14 +10,27 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-    buildTypes {
-        debug{
-            buildConfigField("String", "BASE_URL", "\"https://rahatlatici-sesler.github.io/rahatlatici-sesler-web\"")
+
+    signingConfigs {
+        release {
+            storeFile file("app.keystore")
+            storePassword 'app123'
+            keyAlias 'app123'
+            keyPassword 'app123'
         }
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField("String", "BASE_URL", "\"https://rahatlatici-sesler.github.io/rahatlatici-sesler-web\"")
+            debuggable true
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField("String", "BASE_URL", "\"https://rahatlatici-sesler.github.io/rahatlatici-sesler-web\"")
+            signingConfig signingConfigs.release
         }
     }
 }
