@@ -23,7 +23,6 @@ public class SplashInteractor extends BaseInteractor {
         return getApiHelper().getFavoriteListApiCall();
     }
 
-
     public void saveAllFavorites(List<Song> songList) {
         getAppDatabase().songModel().insertAllFavorites(songList);
     }

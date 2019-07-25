@@ -22,7 +22,7 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField("String", "BASE_URL", "\"https://rahatlatici-sesler.github.io/rahatlatici-sesler-web\"")
+           deb
             debuggable true
         }
 
